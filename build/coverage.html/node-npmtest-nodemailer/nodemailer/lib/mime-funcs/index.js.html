@@ -1,0 +1,2051 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-nodemailer/nodemailer/lib/mime-funcs/index.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-nodemailer">npmtest-nodemailer (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-nodemailer/nodemailer/lib/mime-funcs/index.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">1.63% <small>(4 / 246)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 216)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">0% <small>(0 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">1.65% <small>(4 / 243)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-nodemailer/nodemailer/lib/mime-funcs/</a> &#187; index.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint no-control-regex:0 */
+&nbsp;
+'use strict';
+&nbsp;
+const base64 = require('../base64');
+const qp = require('../qp');
+const mimeTypes = require('./mime-types');
+&nbsp;
+module.exports = {
+&nbsp;
+    /**
+     * Checks if a value is plaintext string (uses only printable 7bit chars)
+     *
+     * @param {String} value String to be tested
+     * @returns {Boolean} true if it is a plaintext string
+     */
+    isPlainText<span class="fstat-no" title="function not covered" >(value) {</span>
+<span class="cstat-no" title="statement not covered" >        if (typeof value !== 'string' || /[\x00-\x08\x0b\x0c\x0e-\x1f\u0080-\uFFFF]/.test(value)) {</span>
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >            return true;</span>
+        }
+    },
+&nbsp;
+    /**
+     * Checks if a multi line string containes lines longer than the selected value.
+     *
+     * Useful when detecting if a mail message needs any processing at all –
+     * if only plaintext characters are used and lines are short, then there is
+     * no need to encode the values in any way. If the value is plaintext but has
+     * longer lines then allowed, then use format=flowed
+     *
+     * @param {Number} lineLength Max line length to check for
+     * @returns {Boolean} Returns true if there is at least one line longer than lineLength chars
+     */
+    hasLongerLines<span class="fstat-no" title="function not covered" >(str, lineLength) {</span>
+<span class="cstat-no" title="statement not covered" >        if (str.length &gt; 128 * 1024) {</span>
+            // do not test strings longer than 128kB
+<span class="cstat-no" title="statement not covered" >            return true;</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return new RegExp('^.{' + (lineLength + 1) + ',}', 'm').test(str);</span>
+    },
+&nbsp;
+    /**
+     * Encodes a string or an Buffer to an UTF-8 MIME Word (rfc2047)
+     *
+     * @param {String|Buffer} data String to be encoded
+     * @param {String} mimeWordEncoding='Q' Encoding for the mime word, either Q or B
+     * @param {Number} [maxLength=0] If set, split mime words into several chunks if needed
+     * @return {String} Single or several mime words joined together
+     */
+    encodeWord<span class="fstat-no" title="function not covered" >(data, mimeWordEncoding, maxLength) {</span>
+<span class="cstat-no" title="statement not covered" >        mimeWordEncoding = (mimeWordEncoding || 'Q').toString().toUpperCase().trim().charAt(0);</span>
+<span class="cstat-no" title="statement not covered" >        maxLength = maxLength || 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        let encodedStr;</span>
+<span class="cstat-no" title="statement not covered" >        let toCharset = 'UTF-8';</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (maxLength &amp;&amp; maxLength &gt; 7 + toCharset.length) {</span>
+<span class="cstat-no" title="statement not covered" >            maxLength -= (7 + toCharset.length);</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (mimeWordEncoding === 'Q') {</span>
+            // https://tools.ietf.org/html/rfc2047#section-5 rule (3)
+<span class="cstat-no" title="statement not covered" >            encodedStr = qp.encode(data).replace(/[^a-z0-9!*+\-\/=]/ig, chr =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                let ord = chr.charCodeAt(0).toString(16).toUpperCase();</span>
+<span class="cstat-no" title="statement not covered" >                if (chr === ' ') {</span>
+<span class="cstat-no" title="statement not covered" >                    return '_';</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    return '=' + (ord.length === 1 ? '0' + ord : ord);</span>
+                }
+            });
+        } else <span class="cstat-no" title="statement not covered" >if (mimeWordEncoding === 'B') {</span>
+<span class="cstat-no" title="statement not covered" >            encodedStr = typeof data === 'string' ? data : base64.encode(data);</span>
+<span class="cstat-no" title="statement not covered" >            maxLength = maxLength ? Math.max(3, (maxLength - maxLength % 4) / 4 * 3) : 0;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (maxLength &amp;&amp; (mimeWordEncoding !== 'B' ? encodedStr : base64.encode(data)).length &gt; maxLength) {</span>
+<span class="cstat-no" title="statement not covered" >            if (mimeWordEncoding === 'Q') {</span>
+<span class="cstat-no" title="statement not covered" >                encodedStr = this.splitMimeEncodedString(encodedStr, maxLength).join('?= =?' + toCharset + '?' + mimeWordEncoding + '?');</span>
+            } else {
+                // RFC2047 6.3 (2) states that encoded-word must include an integral number of characters, so no chopping unicode sequences
+<span class="cstat-no" title="statement not covered" >                let parts = [];</span>
+<span class="cstat-no" title="statement not covered" >                let lpart = '';</span>
+<span class="cstat-no" title="statement not covered" >                for (let i = 0, len = encodedStr.length; i &lt; len; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                    let chr = encodedStr.charAt(i);</span>
+                    // check if we can add this character to the existing string
+                    // without breaking byte length limit
+<span class="cstat-no" title="statement not covered" >                    if (Buffer.byteLength(lpart + chr) &lt;= maxLength || i === 0) {</span>
+<span class="cstat-no" title="statement not covered" >                        lpart += chr;</span>
+                    } else {
+                        // we hit the length limit, so push the existing string and start over
+<span class="cstat-no" title="statement not covered" >                        parts.push(base64.encode(lpart));</span>
+<span class="cstat-no" title="statement not covered" >                        lpart = chr;</span>
+                    }
+                }
+<span class="cstat-no" title="statement not covered" >                if (lpart) {</span>
+<span class="cstat-no" title="statement not covered" >                    parts.push(base64.encode(lpart));</span>
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (parts.length &gt; 1) {</span>
+<span class="cstat-no" title="statement not covered" >                    encodedStr = parts.join('?= =?' + toCharset + '?' + mimeWordEncoding + '?');</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    encodedStr = parts.join('');</span>
+                }
+            }
+        } else <span class="cstat-no" title="statement not covered" >if (mimeWordEncoding === 'B') {</span>
+<span class="cstat-no" title="statement not covered" >            encodedStr = base64.encode(data);</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return '=?' + toCharset + '?' + mimeWordEncoding + '?' + encodedStr + (encodedStr.substr(-2) === '?=' ? '' : '?=');</span>
+    },
+&nbsp;
+    /**
+     * Finds word sequences with non ascii text and converts these to mime words
+     *
+     * @param {String} value String to be encoded
+     * @param {String} mimeWordEncoding='Q' Encoding for the mime word, either Q or B
+     * @param {Number} [maxLength=0] If set, split mime words into several chunks if needed
+     * @return {String} String with possible mime words
+     */
+    encodeWords<span class="fstat-no" title="function not covered" >(value, mimeWordEncoding, maxLength) {</span>
+<span class="cstat-no" title="statement not covered" >        maxLength = maxLength || 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        let encodedValue;</span>
+&nbsp;
+        // find first word with a non-printable ascii in it
+<span class="cstat-no" title="statement not covered" >        let firstMatch = value.match(/(?:^|\s)([^\s]*[\u0080-\uFFFF])/);</span>
+<span class="cstat-no" title="statement not covered" >        if (!firstMatch) {</span>
+<span class="cstat-no" title="statement not covered" >            return value;</span>
+        }
+&nbsp;
+        // find the last word with a non-printable ascii in it
+<span class="cstat-no" title="statement not covered" >        let lastMatch = value.match(/([\u0080-\uFFFF][^\s]*)[^\u0080-\uFFFF]*$/);</span>
+<span class="cstat-no" title="statement not covered" >        if (!lastMatch) {</span>
+            // should not happen
+<span class="cstat-no" title="statement not covered" >            return value;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        let startIndex = firstMatch.index + (firstMatch[0].match(/[^\s]/) || {</span>
+            index: 0
+        }).index;
+<span class="cstat-no" title="statement not covered" >        let endIndex = lastMatch.index + (lastMatch[1] || '').length;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        encodedValue =</span>
+            (startIndex ? value.substr(0, startIndex) : '') + this.encodeWord(value.substring(startIndex, endIndex), mimeWordEncoding || 'Q', maxLength) +
+            (endIndex &lt; value.length ? value.substr(endIndex) : '');
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return encodedValue;</span>
+    },
+&nbsp;
+    /**
+     * Joins parsed header value together as 'value; param1=value1; param2=value2'
+     * PS: We are following RFC 822 for the list of special characters that we need to keep in quotes.
+     *      Refer: https://www.w3.org/Protocols/rfc1341/4_Content-Type.html
+     * @param {Object} structured Parsed header value
+     * @return {String} joined header value
+     */
+    buildHeaderValue<span class="fstat-no" title="function not covered" >(structured) {</span>
+<span class="cstat-no" title="statement not covered" >        let paramsArray = [];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        Object.keys(structured.params || {}).forEach(param =&gt; {</span>
+            // filename might include unicode characters so it is a special case
+            // other values probably do not
+<span class="cstat-no" title="statement not covered" >            let value = structured.params[param];</span>
+<span class="cstat-no" title="statement not covered" >            if (!this.isPlainText(value) || value.length &gt;= 75) {</span>
+<span class="cstat-no" title="statement not covered" >                this.buildHeaderParam(param, value, 50).forEach(encodedParam =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                    if (!/[\s"\\;:\/=\(\),&lt;&gt;@\[\]\?]|^[\-']|'$/.test(encodedParam.value) || encodedParam.key.substr(-1) === '*') {</span>
+<span class="cstat-no" title="statement not covered" >                        paramsArray.push(encodedParam.key + '=' + encodedParam.value);</span>
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        paramsArray.push(encodedParam.key + '=' + JSON.stringify(encodedParam.value));</span>
+                    }
+                });
+            } else <span class="cstat-no" title="statement not covered" >if (/[\s'"\\;:\/=\(\),&lt;&gt;@\[\]\?]|^\-/.test(value)) {</span>
+<span class="cstat-no" title="statement not covered" >                paramsArray.push(param + '=' + JSON.stringify(value));</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >                paramsArray.push(param + '=' + value);</span>
+            }
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return structured.value + (paramsArray.length ? '; ' + paramsArray.join('; ') : '');</span>
+    },
+&nbsp;
+    /**
+     * Encodes a string or an Buffer to an UTF-8 Parameter Value Continuation encoding (rfc2231)
+     * Useful for splitting long parameter values.
+     *
+     * For example
+     *      title="unicode string"
+     * becomes
+     *     title*0*=utf-8''unicode
+     *     title*1*=%20string
+     *
+     * @param {String|Buffer} data String to be encoded
+     * @param {Number} [maxLength=50] Max length for generated chunks
+     * @param {String} [fromCharset='UTF-8'] Source sharacter set
+     * @return {Array} A list of encoded keys and headers
+     */
+    buildHeaderParam<span class="fstat-no" title="function not covered" >(key, data, maxLength) {</span>
+<span class="cstat-no" title="statement not covered" >        let list = [];</span>
+<span class="cstat-no" title="statement not covered" >        let encodedStr = typeof data === 'string' ? data : (data || '').toString();</span>
+<span class="cstat-no" title="statement not covered" >        let encodedStrArr;</span>
+<span class="cstat-no" title="statement not covered" >        let chr, ord;</span>
+<span class="cstat-no" title="statement not covered" >        let line;</span>
+<span class="cstat-no" title="statement not covered" >        let startPos = 0;</span>
+<span class="cstat-no" title="statement not covered" >        let i, len;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        maxLength = maxLength || 50;</span>
+&nbsp;
+        // process ascii only text
+<span class="cstat-no" title="statement not covered" >        if (this.isPlainText(data)) {</span>
+&nbsp;
+            // check if conversion is even needed
+<span class="cstat-no" title="statement not covered" >            if (encodedStr.length &lt;= maxLength) {</span>
+<span class="cstat-no" title="statement not covered" >                return [{</span>
+                    key,
+                    value: encodedStr
+                }];
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            encodedStr = encodedStr.replace(new RegExp('.{' + maxLength + '}', 'g'), str =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                list.push({</span>
+                    line: str
+                });
+<span class="cstat-no" title="statement not covered" >                return '';</span>
+            });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (encodedStr) {</span>
+<span class="cstat-no" title="statement not covered" >                list.push({</span>
+                    line: encodedStr
+                });
+            }
+&nbsp;
+        } else {
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (/[\uD800-\uDBFF]/.test(encodedStr)) {</span>
+                // string containts surrogate pairs, so normalize it to an array of bytes
+<span class="cstat-no" title="statement not covered" >                encodedStrArr = [];</span>
+<span class="cstat-no" title="statement not covered" >                for (i = 0, len = encodedStr.length; i &lt; len; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                    chr = encodedStr.charAt(i);</span>
+<span class="cstat-no" title="statement not covered" >                    ord = chr.charCodeAt(0);</span>
+<span class="cstat-no" title="statement not covered" >                    if (ord &gt;= 0xD800 &amp;&amp; ord &lt;= 0xDBFF &amp;&amp; i &lt; len - 1) {</span>
+<span class="cstat-no" title="statement not covered" >                        chr += encodedStr.charAt(i + 1);</span>
+<span class="cstat-no" title="statement not covered" >                        encodedStrArr.push(chr);</span>
+<span class="cstat-no" title="statement not covered" >                        i++;</span>
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        encodedStrArr.push(chr);</span>
+                    }
+                }
+<span class="cstat-no" title="statement not covered" >                encodedStr = encodedStrArr;</span>
+            }
+&nbsp;
+            // first line includes the charset and language info and needs to be encoded
+            // even if it does not contain any unicode characters
+<span class="cstat-no" title="statement not covered" >            line = 'utf-8\'\'';</span>
+<span class="cstat-no" title="statement not covered" >            let encoded = true;</span>
+<span class="cstat-no" title="statement not covered" >            startPos = 0;</span>
+&nbsp;
+            // process text with unicode or special chars
+<span class="cstat-no" title="statement not covered" >            for (i = 0, len = encodedStr.length; i &lt; len; i++) {</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                chr = encodedStr[i];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (encoded) {</span>
+<span class="cstat-no" title="statement not covered" >                    chr = this.safeEncodeURIComponent(chr);</span>
+                } else {
+                    // try to urlencode current char
+<span class="cstat-no" title="statement not covered" >                    chr = chr === ' ' ? chr : this.safeEncodeURIComponent(chr);</span>
+                    // By default it is not required to encode a line, the need
+                    // only appears when the string contains unicode or special chars
+                    // in this case we start processing the line over and encode all chars
+<span class="cstat-no" title="statement not covered" >                    if (chr !== encodedStr[i]) {</span>
+                        // Check if it is even possible to add the encoded char to the line
+                        // If not, there is no reason to use this line, just push it to the list
+                        // and start a new line with the char that needs encoding
+<span class="cstat-no" title="statement not covered" >                        if ((this.safeEncodeURIComponent(line) + chr).length &gt;= maxLength) {</span>
+<span class="cstat-no" title="statement not covered" >                            list.push({</span>
+                                line,
+                                encoded
+                            });
+<span class="cstat-no" title="statement not covered" >                            line = '';</span>
+<span class="cstat-no" title="statement not covered" >                            startPos = i - 1;</span>
+                        } else {
+<span class="cstat-no" title="statement not covered" >                            encoded = true;</span>
+<span class="cstat-no" title="statement not covered" >                            i = startPos;</span>
+<span class="cstat-no" title="statement not covered" >                            line = '';</span>
+<span class="cstat-no" title="statement not covered" >                            continue;</span>
+                        }
+                    }
+                }
+&nbsp;
+                // if the line is already too long, push it to the list and start a new one
+<span class="cstat-no" title="statement not covered" >                if ((line + chr).length &gt;= maxLength) {</span>
+<span class="cstat-no" title="statement not covered" >                    list.push({</span>
+                        line,
+                        encoded
+                    });
+<span class="cstat-no" title="statement not covered" >                    line = chr = encodedStr[i] === ' ' ? ' ' : this.safeEncodeURIComponent(encodedStr[i]);</span>
+<span class="cstat-no" title="statement not covered" >                    if (chr === encodedStr[i]) {</span>
+<span class="cstat-no" title="statement not covered" >                        encoded = false;</span>
+<span class="cstat-no" title="statement not covered" >                        startPos = i - 1;</span>
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        encoded = true;</span>
+                    }
+                } else {
+<span class="cstat-no" title="statement not covered" >                    line += chr;</span>
+                }
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (line) {</span>
+<span class="cstat-no" title="statement not covered" >                list.push({</span>
+                    line,
+                    encoded
+                });
+            }
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return list.map((item, i) =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
+            // encoded lines: {name}*{part}*
+            // unencoded lines: {name}*{part}
+            // if any line needs to be encoded then the first line (part==0) is always encoded
+            key: key + '*' + i + (item.encoded ? '*' : ''),
+            value: item.line
+        }));
+    },
+&nbsp;
+    /**
+     * Parses a header value with key=value arguments into a structured
+     * object.
+     *
+     *   parseHeaderValue('content-type: text/plain; CHARSET='UTF-8'') -&gt;
+     *   {
+     *     'value': 'text/plain',
+     *     'params': {
+     *       'charset': 'UTF-8'
+     *     }
+     *   }
+     *
+     * @param {String} str Header value
+     * @return {Object} Header value as a parsed structure
+     */
+    parseHeaderValue<span class="fstat-no" title="function not covered" >(str) {</span>
+<span class="cstat-no" title="statement not covered" >        let response = {</span>
+            value: false,
+            params: {}
+        };
+<span class="cstat-no" title="statement not covered" >        let key = false;</span>
+<span class="cstat-no" title="statement not covered" >        let value = '';</span>
+<span class="cstat-no" title="statement not covered" >        let type = 'value';</span>
+<span class="cstat-no" title="statement not covered" >        let quote = false;</span>
+<span class="cstat-no" title="statement not covered" >        let escaped = false;</span>
+<span class="cstat-no" title="statement not covered" >        let chr;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        for (let i = 0, len = str.length; i &lt; len; i++) {</span>
+<span class="cstat-no" title="statement not covered" >            chr = str.charAt(i);</span>
+<span class="cstat-no" title="statement not covered" >            if (type === 'key') {</span>
+<span class="cstat-no" title="statement not covered" >                if (chr === '=') {</span>
+<span class="cstat-no" title="statement not covered" >                    key = value.trim().toLowerCase();</span>
+<span class="cstat-no" title="statement not covered" >                    type = 'value';</span>
+<span class="cstat-no" title="statement not covered" >                    value = '';</span>
+<span class="cstat-no" title="statement not covered" >                    continue;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                value += chr;</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >                if (escaped) {</span>
+<span class="cstat-no" title="statement not covered" >                    value += chr;</span>
+                } else <span class="cstat-no" title="statement not covered" >if (chr === '\\') {</span>
+<span class="cstat-no" title="statement not covered" >                    escaped = true;</span>
+<span class="cstat-no" title="statement not covered" >                    continue;</span>
+                } else <span class="cstat-no" title="statement not covered" >if (quote &amp;&amp; chr === quote) {</span>
+<span class="cstat-no" title="statement not covered" >                    quote = false;</span>
+                } else <span class="cstat-no" title="statement not covered" >if (!quote &amp;&amp; chr === '"') {</span>
+<span class="cstat-no" title="statement not covered" >                    quote = chr;</span>
+                } else <span class="cstat-no" title="statement not covered" >if (!quote &amp;&amp; chr === ';') {</span>
+<span class="cstat-no" title="statement not covered" >                    if (key === false) {</span>
+<span class="cstat-no" title="statement not covered" >                        response.value = value.trim();</span>
+                    } else {
+<span class="cstat-no" title="statement not covered" >                        response.params[key] = value.trim();</span>
+                    }
+<span class="cstat-no" title="statement not covered" >                    type = 'key';</span>
+<span class="cstat-no" title="statement not covered" >                    value = '';</span>
+                } else {
+<span class="cstat-no" title="statement not covered" >                    value += chr;</span>
+                }
+<span class="cstat-no" title="statement not covered" >                escaped = false;</span>
+&nbsp;
+            }
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (type === 'value') {</span>
+<span class="cstat-no" title="statement not covered" >            if (key === false) {</span>
+<span class="cstat-no" title="statement not covered" >                response.value = value.trim();</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >                response.params[key] = value.trim();</span>
+            }
+        } else <span class="cstat-no" title="statement not covered" >if (value.trim()) {</span>
+<span class="cstat-no" title="statement not covered" >            response.params[value.trim().toLowerCase()] = '';</span>
+        }
+&nbsp;
+        // handle parameter value continuations
+        // https://tools.ietf.org/html/rfc2231#section-3
+&nbsp;
+        // preprocess values
+<span class="cstat-no" title="statement not covered" >        Object.keys(response.params).forEach(key =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            let actualKey, nr, match, value;</span>
+<span class="cstat-no" title="statement not covered" >            if ((match = key.match(/(\*(\d+)|\*(\d+)\*|\*)$/))) {</span>
+<span class="cstat-no" title="statement not covered" >                actualKey = key.substr(0, match.index);</span>
+<span class="cstat-no" title="statement not covered" >                nr = Number(match[2] || match[3]) || 0;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (!response.params[actualKey] || typeof response.params[actualKey] !== 'object') {</span>
+<span class="cstat-no" title="statement not covered" >                    response.params[actualKey] = {</span>
+                        charset: false,
+                        values: []
+                    };
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                value = response.params[key];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (nr === 0 &amp;&amp; match[0].substr(-1) === '*' &amp;&amp; (match = value.match(/^([^']*)'[^']*'(.*)$/))) {</span>
+<span class="cstat-no" title="statement not covered" >                    response.params[actualKey].charset = match[1] || 'iso-8859-1';</span>
+<span class="cstat-no" title="statement not covered" >                    value = match[2];</span>
+                }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                response.params[actualKey].values[nr] = value;</span>
+&nbsp;
+                // remove the old reference
+<span class="cstat-no" title="statement not covered" >                delete response.params[key];</span>
+            }
+        });
+&nbsp;
+        // concatenate split rfc2231 strings and convert encoded strings to mime encoded words
+<span class="cstat-no" title="statement not covered" >        Object.keys(response.params).forEach(key =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >            let value;</span>
+<span class="cstat-no" title="statement not covered" >            if (response.params[key] &amp;&amp; Array.isArray(response.params[key].values)) {</span>
+<span class="cstat-no" title="statement not covered" >                value = response.params[key].values.map(val =&gt; <span class="cstat-no" title="statement not covered" >val || '')</span>.join('');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                if (response.params[key].charset) {</span>
+                    // convert "%AB" to "=?charset?Q?=AB?="
+<span class="cstat-no" title="statement not covered" >                    response.params[key] = '=?' +</span>
+                        response.params[key].charset +
+                        '?Q?' +
+                        value.
+                    // fix invalidly encoded chars
+                    replace(/[=\?_\s]/g,
+                        s =&gt; {
+<span class="cstat-no" title="statement not covered" >                            let c = s.charCodeAt(0).toString(16);</span>
+<span class="cstat-no" title="statement not covered" >                            if (s === ' ') {</span>
+<span class="cstat-no" title="statement not covered" >                                return '_';</span>
+                            } else {
+<span class="cstat-no" title="statement not covered" >                                return '%' + (c.length &lt; 2 ? '0' : '') + c;</span>
+                            }
+                        }
+                    ).
+                    // change from urlencoding to percent encoding
+                    replace(/%/g, '=') +
+                        '?=';
+                } else {
+<span class="cstat-no" title="statement not covered" >                    response.params[key] = value;</span>
+                }
+            }
+        });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return response;</span>
+    },
+&nbsp;
+    /**
+     * Returns file extension for a content type string. If no suitable extensions
+     * are found, 'bin' is used as the default extension
+     *
+     * @param {String} mimeType Content type to be checked for
+     * @return {String} File extension
+     */
+    detectExtension: mimeType =&gt; <span class="cstat-no" title="statement not covered" >mimeTypes.detectExtension(mimeType),</span>
+&nbsp;
+    /**
+     * Returns content type for a file extension. If no suitable content types
+     * are found, 'application/octet-stream' is used as the default content type
+     *
+     * @param {String} extension Extension to be checked for
+     * @return {String} File extension
+     */
+    detectMimeType: extension =&gt; <span class="cstat-no" title="statement not covered" >mimeTypes.detectMimeType(extension),</span>
+&nbsp;
+    /**
+     * Folds long lines, useful for folding header lines (afterSpace=false) and
+     * flowed text (afterSpace=true)
+     *
+     * @param {String} str String to be folded
+     * @param {Number} [lineLength=76] Maximum length of a line
+     * @param {Boolean} afterSpace If true, leave a space in th end of a line
+     * @return {String} String with folded lines
+     */
+    foldLines<span class="fstat-no" title="function not covered" >(str, lineLength, afterSpace) {</span>
+<span class="cstat-no" title="statement not covered" >        str = (str || '').toString();</span>
+<span class="cstat-no" title="statement not covered" >        lineLength = lineLength || 76;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        let pos = 0,</span>
+            len = str.length,
+            result = '',
+            line, match;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        while (pos &lt; len) {</span>
+<span class="cstat-no" title="statement not covered" >            line = str.substr(pos, lineLength);</span>
+<span class="cstat-no" title="statement not covered" >            if (line.length &lt; lineLength) {</span>
+<span class="cstat-no" title="statement not covered" >                result += line;</span>
+<span class="cstat-no" title="statement not covered" >                break;</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if ((match = line.match(/^[^\n\r]*(\r?\n|\r)/))) {</span>
+<span class="cstat-no" title="statement not covered" >                line = match[0];</span>
+<span class="cstat-no" title="statement not covered" >                result += line;</span>
+<span class="cstat-no" title="statement not covered" >                pos += line.length;</span>
+<span class="cstat-no" title="statement not covered" >                continue;</span>
+            } else <span class="cstat-no" title="statement not covered" >if ((match = line.match(/(\s+)[^\s]*$/)) &amp;&amp; match[0].length - (afterSpace ? (match[1] || '').length : 0) &lt; line.length) {</span>
+<span class="cstat-no" title="statement not covered" >                line = line.substr(0, line.length - (match[0].length - (afterSpace ? (match[1] || '').length : 0)));</span>
+            } else <span class="cstat-no" title="statement not covered" >if ((match = str.substr(pos + line.length).match(/^[^\s]+(\s*)/))) {</span>
+<span class="cstat-no" title="statement not covered" >                line = line + match[0].substr(0, match[0].length - (!afterSpace ? (match[1] || '').length : 0));</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            result += line;</span>
+<span class="cstat-no" title="statement not covered" >            pos += line.length;</span>
+<span class="cstat-no" title="statement not covered" >            if (pos &lt; len) {</span>
+<span class="cstat-no" title="statement not covered" >                result += '\r\n';</span>
+            }
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return result;</span>
+    },
+&nbsp;
+    /**
+     * Splits a mime encoded string. Needed for dividing mime words into smaller chunks
+     *
+     * @param {String} str Mime encoded string to be split up
+     * @param {Number} maxlen Maximum length of characters for one part (minimum 12)
+     * @return {Array} Split string
+     */
+    splitMimeEncodedString: (str, maxlen) =&gt; {
+<span class="cstat-no" title="statement not covered" >        let curLine, match, chr, done,</span>
+            lines = [];
+&nbsp;
+        // require at least 12 symbols to fit possible 4 octet UTF-8 sequences
+<span class="cstat-no" title="statement not covered" >        maxlen = Math.max(maxlen || 0, 12);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        while (str.length) {</span>
+<span class="cstat-no" title="statement not covered" >            curLine = str.substr(0, maxlen);</span>
+&nbsp;
+            // move incomplete escaped char back to main
+<span class="cstat-no" title="statement not covered" >            if ((match = curLine.match(/\=[0-9A-F]?$/i))) {</span>
+<span class="cstat-no" title="statement not covered" >                curLine = curLine.substr(0, match.index);</span>
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            done = false;</span>
+<span class="cstat-no" title="statement not covered" >            while (!done) {</span>
+<span class="cstat-no" title="statement not covered" >                done = true;</span>
+                // check if not middle of a unicode char sequence
+<span class="cstat-no" title="statement not covered" >                if ((match = str.substr(curLine.length).match(/^\=([0-9A-F]{2})/i))) {</span>
+<span class="cstat-no" title="statement not covered" >                    chr = parseInt(match[1], 16);</span>
+                    // invalid sequence, move one char back anc recheck
+<span class="cstat-no" title="statement not covered" >                    if (chr &lt; 0xC2 &amp;&amp; chr &gt; 0x7F) {</span>
+<span class="cstat-no" title="statement not covered" >                        curLine = curLine.substr(0, curLine.length - 3);</span>
+<span class="cstat-no" title="statement not covered" >                        done = false;</span>
+                    }
+                }
+            }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            if (curLine.length) {</span>
+<span class="cstat-no" title="statement not covered" >                lines.push(curLine);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            str = str.substr(curLine.length);</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return lines;</span>
+    },
+&nbsp;
+    encodeURICharComponent: chr =&gt; {
+<span class="cstat-no" title="statement not covered" >        let res = '';</span>
+<span class="cstat-no" title="statement not covered" >        let ord = chr.charCodeAt(0).toString(16).toUpperCase();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (ord.length % 2) {</span>
+<span class="cstat-no" title="statement not covered" >            ord = '0' + ord;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (ord.length &gt; 2) {</span>
+<span class="cstat-no" title="statement not covered" >            for (let i = 0, len = ord.length / 2; i &lt; len; i++) {</span>
+<span class="cstat-no" title="statement not covered" >                res += '%' + ord.substr(i, 2);</span>
+            }
+        } else {
+<span class="cstat-no" title="statement not covered" >            res += '%' + ord;</span>
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return res;</span>
+    },
+&nbsp;
+    safeEncodeURIComponent<span class="fstat-no" title="function not covered" >(str) {</span>
+<span class="cstat-no" title="statement not covered" >        str = (str || '').toString();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        try {</span>
+            // might throw if we try to encode invalid sequences, eg. partial emoji
+<span class="cstat-no" title="statement not covered" >            str = encodeURIComponent(str);</span>
+        } catch (E) {
+            // should never run
+<span class="cstat-no" title="statement not covered" >            return str.replace(/[^\x00-\x1F *'()&lt;&gt;@,;:\\"\[\]?=\u007F-\uFFFF]+/g, '');</span>
+        }
+&nbsp;
+        // ensure chars that are not handled by encodeURICompent are converted as well
+<span class="cstat-no" title="statement not covered" >        return str.replace(/[\x00-\x1F *'()&lt;&gt;@,;:\\"\[\]?=\u007F-\uFFFF]/g, chr =&gt; <span class="cstat-no" title="statement not covered" >this.encodeURICharComponent(chr))</span>;</span>
+    }
+&nbsp;
+};
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Tue Apr 11 2017 02:37:05 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
