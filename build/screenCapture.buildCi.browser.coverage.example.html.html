@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <title>Code coverage report for node-npmtest-nodemailer/nodemailer/lib/smtp-pool/pool-resource.js</title>
     <meta charset="utf-8">
     <style>
@@ -210,11 +208,11 @@
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-nodemailer/nodemailer/lib/smtp-pool/</a> &#187; pool-resource.js</div>
+    <div class="path"><a href="../../../../index.html">All files</a> » <a href="index.html">node-npmtest-nodemailer/nodemailer/lib/smtp-pool/</a> » pool-resource.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
-<tr><td class="line-count">1
+<tbody><tr><td class="line-count">1
 2
 3
 4
@@ -690,31 +688,31 @@ const EventEmitter = require('events');
  * @param {Object} options SMTPPool instance
  */
 class PoolResource extends EventEmitter {
-    constructor<span class="fstat-no" title="function not covered" >(pool) {</span>
-<span class="cstat-no" title="statement not covered" >        super();</span>
+    constructor<span class="fstat-no" title="function not covered">(pool) {</span>
+<span class="cstat-no" title="statement not covered">        super();</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.pool = pool;</span>
-<span class="cstat-no" title="statement not covered" >        this.options = pool.options;</span>
-<span class="cstat-no" title="statement not covered" >        this.logger = this.pool.logger;</span>
+<span class="cstat-no" title="statement not covered">        this.pool = pool;</span>
+<span class="cstat-no" title="statement not covered">        this.options = pool.options;</span>
+<span class="cstat-no" title="statement not covered">        this.logger = this.pool.logger;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        if (this.options.auth) {</span>
-<span class="cstat-no" title="statement not covered" >            switch ((this.options.auth.type || '').toString().toUpperCase()) {</span>
+<span class="cstat-no" title="statement not covered">        if (this.options.auth) {</span>
+<span class="cstat-no" title="statement not covered">            switch ((this.options.auth.type || '').toString().toUpperCase()) {</span>
                 case 'OAUTH2':
                     {
-<span class="cstat-no" title="statement not covered" >                        let oauth2 = new XOAuth2(this.options.auth, this.logger);</span>
-<span class="cstat-no" title="statement not covered" >                        oauth2.provisionCallback = this.pool.mailer &amp;&amp; this.pool.mailer.get('oauth2_provision_cb') || oauth2.provisionCallback;</span>
-<span class="cstat-no" title="statement not covered" >                        this.auth = {</span>
+<span class="cstat-no" title="statement not covered">                        let oauth2 = new XOAuth2(this.options.auth, this.logger);</span>
+<span class="cstat-no" title="statement not covered">                        oauth2.provisionCallback = this.pool.mailer &amp;&amp; this.pool.mailer.get('oauth2_provision_cb') || oauth2.provisionCallback;</span>
+<span class="cstat-no" title="statement not covered">                        this.auth = {</span>
                             type: 'OAUTH2',
                             user: this.options.auth.user,
                             oauth2,
                             method: 'XOAUTH2'
                         };
-<span class="cstat-no" title="statement not covered" >                        oauth2.on('token', token =&gt; <span class="cstat-no" title="statement not covered" >this.pool.mailer.emit('token', token))</span>;</span>
-<span class="cstat-no" title="statement not covered" >                        oauth2.on('error', err =&gt; <span class="cstat-no" title="statement not covered" >this.emit('error', err))</span>;</span>
-<span class="cstat-no" title="statement not covered" >                        break;</span>
+<span class="cstat-no" title="statement not covered">                        oauth2.on('token', token =&gt; <span class="cstat-no" title="statement not covered">this.pool.mailer.emit('token', token))</span>;</span>
+<span class="cstat-no" title="statement not covered">                        oauth2.on('error', err =&gt; <span class="cstat-no" title="statement not covered">this.emit('error', err))</span>;</span>
+<span class="cstat-no" title="statement not covered">                        break;</span>
                     }
                 default:
-<span class="cstat-no" title="statement not covered" >                    this.auth = {</span>
+<span class="cstat-no" title="statement not covered">                    this.auth = {</span>
                         type: 'LOGIN',
                         user: this.options.auth.user,
                         credentials: {
@@ -726,11 +724,11 @@ class PoolResource extends EventEmitter {
             }
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this._connection = false;</span>
-<span class="cstat-no" title="statement not covered" >        this._connected = false;</span>
+<span class="cstat-no" title="statement not covered">        this._connection = false;</span>
+<span class="cstat-no" title="statement not covered">        this._connected = false;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.messages = 0;</span>
-<span class="cstat-no" title="statement not covered" >        this.available = true;</span>
+<span class="cstat-no" title="statement not covered">        this.messages = 0;</span>
+<span class="cstat-no" title="statement not covered">        this.available = true;</span>
     }
 &nbsp;
     /**
@@ -738,16 +736,16 @@ class PoolResource extends EventEmitter {
      *
      * @param {Function} callback Callback function to run once the connection is established or failed
      */
-    connect<span class="fstat-no" title="function not covered" >(callback) {</span>
-<span class="cstat-no" title="statement not covered" >        this.pool.getSocket(this.options, (err, socketOptions) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            if (err) {</span>
-<span class="cstat-no" title="statement not covered" >                return callback(err);</span>
+    connect<span class="fstat-no" title="function not covered">(callback) {</span>
+<span class="cstat-no" title="statement not covered">        this.pool.getSocket(this.options, (err, socketOptions) =&gt; {</span>
+<span class="cstat-no" title="statement not covered">            if (err) {</span>
+<span class="cstat-no" title="statement not covered">                return callback(err);</span>
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            let returned = false;</span>
-<span class="cstat-no" title="statement not covered" >            let options = this.options;</span>
-<span class="cstat-no" title="statement not covered" >            if (socketOptions &amp;&amp; socketOptions.connection) {</span>
-<span class="cstat-no" title="statement not covered" >                this.logger.info({</span>
+<span class="cstat-no" title="statement not covered">            let returned = false;</span>
+<span class="cstat-no" title="statement not covered">            let options = this.options;</span>
+<span class="cstat-no" title="statement not covered">            if (socketOptions &amp;&amp; socketOptions.connection) {</span>
+<span class="cstat-no" title="statement not covered">                this.logger.info({</span>
                     tnx: 'proxy',
                     remoteAddress: socketOptions.connection.remoteAddress,
                     remotePort: socketOptions.connection.remotePort,
@@ -756,68 +754,68 @@ class PoolResource extends EventEmitter {
                     action: 'connected'
                 }, 'Using proxied socket from %s:%s to %s:%s', socketOptions.connection.remoteAddress, socketOptions.connection.remotePort, options.host || '', options.port || '');
 &nbsp;
-<span class="cstat-no" title="statement not covered" >                options = assign(false, options);</span>
-<span class="cstat-no" title="statement not covered" >                Object.keys(socketOptions).forEach(key =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                    options[key] = socketOptions[key];</span>
+<span class="cstat-no" title="statement not covered">                options = assign(false, options);</span>
+<span class="cstat-no" title="statement not covered">                Object.keys(socketOptions).forEach(key =&gt; {</span>
+<span class="cstat-no" title="statement not covered">                    options[key] = socketOptions[key];</span>
                 });
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            this.connection = new SMTPConnection(options);</span>
+<span class="cstat-no" title="statement not covered">            this.connection = new SMTPConnection(options);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            this.connection.once('error', err =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                this.emit('error', err);</span>
-<span class="cstat-no" title="statement not covered" >                if (returned) {</span>
-<span class="cstat-no" title="statement not covered" >                    return;</span>
+<span class="cstat-no" title="statement not covered">            this.connection.once('error', err =&gt; {</span>
+<span class="cstat-no" title="statement not covered">                this.emit('error', err);</span>
+<span class="cstat-no" title="statement not covered">                if (returned) {</span>
+<span class="cstat-no" title="statement not covered">                    return;</span>
                 }
-<span class="cstat-no" title="statement not covered" >                returned = true;</span>
-<span class="cstat-no" title="statement not covered" >                return callback(err);</span>
+<span class="cstat-no" title="statement not covered">                returned = true;</span>
+<span class="cstat-no" title="statement not covered">                return callback(err);</span>
             });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            this.connection.once('end', () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                this.close();</span>
-<span class="cstat-no" title="statement not covered" >                if (returned) {</span>
-<span class="cstat-no" title="statement not covered" >                    return;</span>
+<span class="cstat-no" title="statement not covered">            this.connection.once('end', () =&gt; {</span>
+<span class="cstat-no" title="statement not covered">                this.close();</span>
+<span class="cstat-no" title="statement not covered">                if (returned) {</span>
+<span class="cstat-no" title="statement not covered">                    return;</span>
                 }
-<span class="cstat-no" title="statement not covered" >                returned = true;</span>
-<span class="cstat-no" title="statement not covered" >                setTimeout(() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                    if (returned) {</span>
-<span class="cstat-no" title="statement not covered" >                        return;</span>
+<span class="cstat-no" title="statement not covered">                returned = true;</span>
+<span class="cstat-no" title="statement not covered">                setTimeout(() =&gt; {</span>
+<span class="cstat-no" title="statement not covered">                    if (returned) {</span>
+<span class="cstat-no" title="statement not covered">                        return;</span>
                     }
                     // still have not returned, this means we have an unexpected connection close
-<span class="cstat-no" title="statement not covered" >                    let err = new Error('Unexpected socket close');</span>
-<span class="cstat-no" title="statement not covered" >                    if (this.connection &amp;&amp; this.connection._socket &amp;&amp; this.connection._socket.upgrading) {</span>
+<span class="cstat-no" title="statement not covered">                    let err = new Error('Unexpected socket close');</span>
+<span class="cstat-no" title="statement not covered">                    if (this.connection &amp;&amp; this.connection._socket &amp;&amp; this.connection._socket.upgrading) {</span>
                         // starttls connection errors
-<span class="cstat-no" title="statement not covered" >                        err.code = 'ETLS';</span>
+<span class="cstat-no" title="statement not covered">                        err.code = 'ETLS';</span>
                     }
-<span class="cstat-no" title="statement not covered" >                    callback(err);</span>
+<span class="cstat-no" title="statement not covered">                    callback(err);</span>
                 }, 1000).unref();
             });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            this.connection.connect(() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                if (returned) {</span>
-<span class="cstat-no" title="statement not covered" >                    return;</span>
+<span class="cstat-no" title="statement not covered">            this.connection.connect(() =&gt; {</span>
+<span class="cstat-no" title="statement not covered">                if (returned) {</span>
+<span class="cstat-no" title="statement not covered">                    return;</span>
                 }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >                if (this.auth) {</span>
-<span class="cstat-no" title="statement not covered" >                    this.connection.login(this.auth, err =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                        if (returned) {</span>
-<span class="cstat-no" title="statement not covered" >                            return;</span>
+<span class="cstat-no" title="statement not covered">                if (this.auth) {</span>
+<span class="cstat-no" title="statement not covered">                    this.connection.login(this.auth, err =&gt; {</span>
+<span class="cstat-no" title="statement not covered">                        if (returned) {</span>
+<span class="cstat-no" title="statement not covered">                            return;</span>
                         }
-<span class="cstat-no" title="statement not covered" >                        returned = true;</span>
+<span class="cstat-no" title="statement not covered">                        returned = true;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >                        if (err) {</span>
-<span class="cstat-no" title="statement not covered" >                            this.connection.close();</span>
-<span class="cstat-no" title="statement not covered" >                            this.emit('error', err);</span>
-<span class="cstat-no" title="statement not covered" >                            return callback(err);</span>
+<span class="cstat-no" title="statement not covered">                        if (err) {</span>
+<span class="cstat-no" title="statement not covered">                            this.connection.close();</span>
+<span class="cstat-no" title="statement not covered">                            this.emit('error', err);</span>
+<span class="cstat-no" title="statement not covered">                            return callback(err);</span>
                         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >                        this._connected = true;</span>
-<span class="cstat-no" title="statement not covered" >                        callback(null, true);</span>
+<span class="cstat-no" title="statement not covered">                        this._connected = true;</span>
+<span class="cstat-no" title="statement not covered">                        callback(null, true);</span>
                     });
                 } else {
-<span class="cstat-no" title="statement not covered" >                    returned = true;</span>
-<span class="cstat-no" title="statement not covered" >                    this._connected = true;</span>
-<span class="cstat-no" title="statement not covered" >                    return callback(null, true);</span>
+<span class="cstat-no" title="statement not covered">                    returned = true;</span>
+<span class="cstat-no" title="statement not covered">                    this._connected = true;</span>
+<span class="cstat-no" title="statement not covered">                    return callback(null, true);</span>
                 }
             });
         });
@@ -829,89 +827,90 @@ class PoolResource extends EventEmitter {
      * @param {Object} mail Mail object
      * @param {Function} callback Callback function
      */
-    send<span class="fstat-no" title="function not covered" >(mail, callback) {</span>
-<span class="cstat-no" title="statement not covered" >        if (!this._connected) {</span>
-<span class="cstat-no" title="statement not covered" >            return this.connect(err =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                if (err) {</span>
-<span class="cstat-no" title="statement not covered" >                    return callback(err);</span>
+    send<span class="fstat-no" title="function not covered">(mail, callback) {</span>
+<span class="cstat-no" title="statement not covered">        if (!this._connected) {</span>
+<span class="cstat-no" title="statement not covered">            return this.connect(err =&gt; {</span>
+<span class="cstat-no" title="statement not covered">                if (err) {</span>
+<span class="cstat-no" title="statement not covered">                    return callback(err);</span>
                 }
-<span class="cstat-no" title="statement not covered" >                return this.send(mail, callback);</span>
+<span class="cstat-no" title="statement not covered">                return this.send(mail, callback);</span>
             });
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        let envelope = mail.message.getEnvelope();</span>
-<span class="cstat-no" title="statement not covered" >        let messageId = mail.message.messageId();</span>
+<span class="cstat-no" title="statement not covered">        let envelope = mail.message.getEnvelope();</span>
+<span class="cstat-no" title="statement not covered">        let messageId = mail.message.messageId();</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        let recipients = [].concat(envelope.to || []);</span>
-<span class="cstat-no" title="statement not covered" >        if (recipients.length &gt; 3) {</span>
-<span class="cstat-no" title="statement not covered" >            recipients.push('...and ' + recipients.splice(2).length + ' more');</span>
+<span class="cstat-no" title="statement not covered">        let recipients = [].concat(envelope.to || []);</span>
+<span class="cstat-no" title="statement not covered">        if (recipients.length &gt; 3) {</span>
+<span class="cstat-no" title="statement not covered">            recipients.push('...and ' + recipients.splice(2).length + ' more');</span>
         }
-<span class="cstat-no" title="statement not covered" >        this.logger.info({</span>
+<span class="cstat-no" title="statement not covered">        this.logger.info({</span>
             tnx: 'send',
             messageId,
             cid: this.id
         }, 'Sending message %s using #%s to &lt;%s&gt;', messageId, this.id, recipients.join(', '));
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        if (mail.data.dsn) {</span>
-<span class="cstat-no" title="statement not covered" >            envelope.dsn = mail.data.dsn;</span>
+<span class="cstat-no" title="statement not covered">        if (mail.data.dsn) {</span>
+<span class="cstat-no" title="statement not covered">            envelope.dsn = mail.data.dsn;</span>
         }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        this.connection.send(envelope, mail.message.createReadStream(), (err, info) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            this.messages++;</span>
+<span class="cstat-no" title="statement not covered">        this.connection.send(envelope, mail.message.createReadStream(), (err, info) =&gt; {</span>
+<span class="cstat-no" title="statement not covered">            this.messages++;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            if (err) {</span>
-<span class="cstat-no" title="statement not covered" >                this.connection.close();</span>
-<span class="cstat-no" title="statement not covered" >                this.emit('error', err);</span>
-<span class="cstat-no" title="statement not covered" >                return callback(err);</span>
+<span class="cstat-no" title="statement not covered">            if (err) {</span>
+<span class="cstat-no" title="statement not covered">                this.connection.close();</span>
+<span class="cstat-no" title="statement not covered">                this.emit('error', err);</span>
+<span class="cstat-no" title="statement not covered">                return callback(err);</span>
             }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            info.envelope = {</span>
+<span class="cstat-no" title="statement not covered">            info.envelope = {</span>
                 from: envelope.from,
                 to: envelope.to
             };
-<span class="cstat-no" title="statement not covered" >            info.messageId = messageId;</span>
+<span class="cstat-no" title="statement not covered">            info.messageId = messageId;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            setImmediate(() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                let err;</span>
-<span class="cstat-no" title="statement not covered" >                if (this.messages &gt;= this.options.maxMessages) {</span>
-<span class="cstat-no" title="statement not covered" >                    err = new Error('Resource exhausted');</span>
-<span class="cstat-no" title="statement not covered" >                    err.code = 'EMAXLIMIT';</span>
-<span class="cstat-no" title="statement not covered" >                    this.connection.close();</span>
-<span class="cstat-no" title="statement not covered" >                    this.emit('error', err);</span>
+<span class="cstat-no" title="statement not covered">            setImmediate(() =&gt; {</span>
+<span class="cstat-no" title="statement not covered">                let err;</span>
+<span class="cstat-no" title="statement not covered">                if (this.messages &gt;= this.options.maxMessages) {</span>
+<span class="cstat-no" title="statement not covered">                    err = new Error('Resource exhausted');</span>
+<span class="cstat-no" title="statement not covered">                    err.code = 'EMAXLIMIT';</span>
+<span class="cstat-no" title="statement not covered">                    this.connection.close();</span>
+<span class="cstat-no" title="statement not covered">                    this.emit('error', err);</span>
                 } else {
-<span class="cstat-no" title="statement not covered" >                    this.pool._checkRateLimit(() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                        this.available = true;</span>
-<span class="cstat-no" title="statement not covered" >                        this.emit('available');</span>
+<span class="cstat-no" title="statement not covered">                    this.pool._checkRateLimit(() =&gt; {</span>
+<span class="cstat-no" title="statement not covered">                        this.available = true;</span>
+<span class="cstat-no" title="statement not covered">                        this.emit('available');</span>
                     });
                 }
             });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            callback(null, info);</span>
+<span class="cstat-no" title="statement not covered">            callback(null, info);</span>
         });
     }
 &nbsp;
     /**
      * Closes the connection
      */
-    close<span class="fstat-no" title="function not covered" >() {</span>
-<span class="cstat-no" title="statement not covered" >        this._connected = false;</span>
-<span class="cstat-no" title="statement not covered" >        if (this.auth &amp;&amp; this.auth.oauth2) {</span>
-<span class="cstat-no" title="statement not covered" >            this.auth.oauth2.removeAllListeners();</span>
+    close<span class="fstat-no" title="function not covered">() {</span>
+<span class="cstat-no" title="statement not covered">        this._connected = false;</span>
+<span class="cstat-no" title="statement not covered">        if (this.auth &amp;&amp; this.auth.oauth2) {</span>
+<span class="cstat-no" title="statement not covered">            this.auth.oauth2.removeAllListeners();</span>
         }
-<span class="cstat-no" title="statement not covered" >        if (this.connection) {</span>
-<span class="cstat-no" title="statement not covered" >            this.connection.close();</span>
+<span class="cstat-no" title="statement not covered">        if (this.connection) {</span>
+<span class="cstat-no" title="statement not covered">            this.connection.close();</span>
         }
-<span class="cstat-no" title="statement not covered" >        this.emit('close');</span>
+<span class="cstat-no" title="statement not covered">        this.emit('close');</span>
     }
 }
 &nbsp;
 module.exports = PoolResource;
 &nbsp;
 &nbsp;</pre></td></tr>
-</table></pre>
+</tbody></table></pre>
 </div>
 <div class="footer">
     <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Sat Apr 15 2017 21:20:20 GMT+0000 (UTC)</div>
 </div>
-</body>
-</html>
+
+
+</body></html>
