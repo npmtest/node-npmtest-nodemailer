@@ -1,6 +1,6 @@
 # npmtest-nodemailer
 
-#### test coverage for  [nodemailer (v4.0.1)](https://nodemailer.com/)  [![npm package](https://img.shields.io/npm/v/npmtest-nodemailer.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-nodemailer) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-nodemailer.svg)](https://travis-ci.org/npmtest/node-npmtest-nodemailer)
+#### basic test coverage for  [nodemailer (v4.0.1)](https://nodemailer.com/)  [![npm package](https://img.shields.io/npm/v/npmtest-nodemailer.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-nodemailer) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-nodemailer.svg)](https://travis-ci.org/npmtest/node-npmtest-nodemailer)
 
 #### Easy as cake e-mail sending from your Node.js applications
 
